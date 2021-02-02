@@ -1,0 +1,67 @@
+body {
+margin:0;
+padding:0;
+background:#ffffff;
+text-align:center;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+div {
+    width: 760px;
+    margin:0 auto;			
+    }
+#topo{
+        margin-right: 5px;
+        text-decoration: none;
+        margin-right: 5px;
+        padding: 10px;
+        background-color:lightskyblue;
+        color: rgb(255, 255, 255);
+        border-radius: 5%;
+  }
+table{
+    margin:auto;
+}
+#meio{
+    background: rgb(172, 171, 168);
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+#footer{
+    background: rgb(223, 121, 172);
+    bottom: 0;
+    color: white;
+    text-align: center;
+}
+#tudo{
+    background: rgb(207, 207, 207);
+}
+ul{
+    list-style-type: none;
+    padding-right: 5.5%;
+}
+#funcionarios{
+    padding-top: 5px;
+    background: rgb(207, 207, 207);
+}
+#form{
+    color: teal;
+}
+#form-add:hover{
+    background-color:rgb(63, 126, 189);
+    width:90px;
+}
+#estoque{
+    border-collapse: collapse;
+    border: 1px solid black;
+    text-align: center
+}
+#estoquetopo{
+    background-color:rgb(202, 202, 202);
+}
+#estoquetabela:hover{
+    background-color: #e2dfdf;
+}
+#produto{
+    padding-top: 10px;
+    background: rgb(207, 207, 207);
+}
