@@ -1,67 +1,100 @@
 body {
-margin:0;
-padding:0;
-background:#ffffff;
-text-align:center;
-font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+  text-align: center;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 div {
-    width: 760px;
-    margin:0 auto;			
-    }
-#topo{
-        margin-right: 5px;
-        text-decoration: none;
-        margin-right: 5px;
-        padding: 10px;
-        background-color:lightskyblue;
-        color: rgb(255, 255, 255);
-        border-radius: 5%;
-  }
-table{
-    margin:auto;
+  width: 760px;
+  margin: 0 auto;
 }
-#meio{
-    background: rgb(172, 171, 168);
-    padding-top: 25px;
-    padding-bottom: 25px;
+#topo {
+  margin-right: 5px;
+  text-decoration: none;
+  background-color: lightskyblue;
+  color: rgb(255, 255, 255);
+  border-radius: 5%;
+  padding: 5px;
+  width: auto;
 }
-#footer{
-    background: rgb(223, 121, 172);
-    bottom: 0;
-    color: white;
-    text-align: center;
+table {
+  margin: auto;
 }
-#tudo{
-    background: rgb(207, 207, 207);
+#meio {
+  background: rgb(172, 171, 168);
+  padding-top: 25px;
+  padding-bottom: 25px;
 }
-ul{
-    list-style-type: none;
-    padding-right: 5.5%;
+#footer {
+  background: rgb(223, 121, 172);
+  bottom: 0;
+  color: white;
+  text-align: center;
 }
-#funcionarios{
-    padding-top: 5px;
-    background: rgb(207, 207, 207);
+#tudo {
+  background: rgb(207, 207, 207);
 }
-#form{
-    color: teal;
+ul {
+  list-style-type: none;
+  padding-right: 5.5%;
 }
-#form-add:hover{
-    background-color:rgb(63, 126, 189);
-    width:90px;
+#funcionarios {
+  padding-top: 5px;
+  background: rgb(207, 207, 207);
 }
-#estoque{
-    border-collapse: collapse;
-    border: 1px solid black;
-    text-align: center
+#form {
+  color: rgb(0, 0, 0);
+  font-weight: bold;
 }
-#estoquetopo{
-    background-color:rgb(202, 202, 202);
+#estoque {
+  border-collapse: collapse;
+  border: 1px solid black;
+  text-align: center;
 }
-#estoquetabela:hover{
-    background-color: #e2dfdf;
+#estoquetopo {
+  background-color: rgb(202, 202, 202);
 }
-#produto{
-    padding-top: 10px;
-    background: rgb(207, 207, 207);
+#estoquetabela:hover {
+  background-color: #e2dfdf;
+}
+#produto {
+  padding-top: 10px;
+  background: rgb(207, 207, 207);
+}
+#venda {
+  padding-top: 10px;
+  background: rgb(207, 207, 207);
+}
+#vendaadd {
+  width: 90%;
+  border-collapse: collapse;
+  border: 1px solid black;
+  background-color: rgb(255, 255, 255);
+}
+select {
+  width: auto;
+  padding: 10px;
+}
+#vendatopo {
+  background-color: rgb(230, 230, 230);
+}
+#vendahistorico {
+  border-collapse: collapse;
+  border: 1px solid black;
+  text-align: center;
+  width: 100%;
+}
+#vendahistoricotopo {
+  background-color: rgb(202, 202, 202);
+}
+#estoquetabela:hover {
+  background-color: #e2dfdf;
+}
+#datavenda {
+  width: 20%;
+  padding: 5px;
+}
+#buscardata {
+  display: inline;
 }
