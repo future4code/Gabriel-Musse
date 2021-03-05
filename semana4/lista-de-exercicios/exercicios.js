@@ -176,7 +176,14 @@ function filmeFavorito() {
 // Exercício 13
 
 function imprimeChamada() {
-   // implemente sua lógica aqui
+   let output ={
+      nome: String("O Diabo Veste Prada"),
+      ano: Number(2006),
+      diretor: String("David Frankel"),
+      atores: [String("Meryl Streep"), String("Anne Hathaway"), String("Emily Blunt"),String("Stanley Tucci")]
+   }
+   return `Venha assistir ao filme ${output.nome}, de ${output.ano}, dirigido por ${output.diretor} e estrelado por ${output.atores[0]}, ${output.atores[1]}, ${output.atores[2]}, ${output.atores[3]}.`
+   
 }
 
 // Exercício 14
