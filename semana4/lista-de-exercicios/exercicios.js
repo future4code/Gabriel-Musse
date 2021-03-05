@@ -245,19 +245,35 @@ function menoresDe18(arrayDePessoas) {
 // Exercício 17, letra A
 
 function multiplicaArrayPor2(array) {
-   // implemente sua lógica aqui
+  const numerosMultiplicados = array.map((numero) =>{
+     return (numero*2)
+  }
+  )
+  return numerosMultiplicados
 }
 
 // Exercício 17, letra B
 
 function multiplicaArrayPor2S(array) {
-  // implemente sua lógica aqui
+   const numerosMultiplicados = array.map((numero) =>{
+      return String(numero*2)
+   }
+   )
+   return numerosMultiplicados
 }
 
 // Exercício 17, letra C
 
 function verificaParidade(array) {
-   // implemente sua lógica aqui
+   const numerosVerificados = array.map((numero) =>{
+      if(numero%2==0){
+         return String(`${numero} é par`)
+      } else {
+         return String(`${numero} é ímpar`)
+      }
+   }
+   )
+   return numerosVerificados
 }
 
 // Exercício 18
