@@ -289,15 +289,27 @@ const pessoas = [
 
 //Exercício 18, letra A
 
-function retornaPessoasAutorizadas(pessoas) {
-   // implemente sua lógica aqui
+function retornaPessoasAutorizadas() {
+   const pessoasAutorizadas = pessoas.filter((pessoa) =>{
+      if(pessoa.idade>14 && pessoa.idade<60 && pessoa.altura>1.5){
+         return true
+      }
+   }
+   )
+   return pessoasAutorizadas
 }
 
 
 // Exercício 18, letra B
 
-function retornaPessoasNaoAutorizadas(pessoas) {
-   // implemente sua lógica aqui
+function retornaPessoasNaoAutorizadas() {
+   const pessoasnaoAutorizadas = pessoas.filter((pessoa) =>{
+      if(pessoa.idade<14 || pessoa.idade>60 || pessoa.altura<1.5){
+         return true
+      }
+   }
+   )
+   return pessoasnaoAutorizadas
 }
 
 //Exercício 19
