@@ -219,13 +219,27 @@ const arrayDePessoas = [
 // Exercício 16, letra A
 
 function maioresDe18(arrayDePessoas) {
-   // implemente sua lógica aqui
+   let maior18 = arrayDePessoas.filter((pessoa) => {
+      if(pessoa.idade >= 18){
+         return true
+      }
+      return false
+   }
+   )
+   return maior18
 }
 
 // Exercício 16, letra B
 
 function menoresDe18(arrayDePessoas) {
-   // implemente sua lógica aqui
+   let menor18 = arrayDePessoas.filter((pessoa) => {
+      if(pessoa.idade <= 18){
+         return true
+      }
+      return false
+   }
+   )
+   return menor18
 }
 
 // Exercício 17, letra A
