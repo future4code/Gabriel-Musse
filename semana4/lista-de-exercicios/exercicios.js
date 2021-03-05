@@ -164,7 +164,13 @@ function ordenaArray(array) {
 // Exercício 12
 
 function filmeFavorito() {
-   // implemente sua lógica aqui
+   let output ={
+      nome: String("O Diabo Veste Prada"),
+      ano: Number(2006),
+      diretor: String("David Frankel"),
+      atores: [String("Meryl Streep"), String("Anne Hathaway"), String("Emily Blunt"),String("Stanley Tucci")]
+   }
+   return output
 }
 
 // Exercício 13
