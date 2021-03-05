@@ -348,5 +348,12 @@ const contas = [
 ]
 
 function atualizaSaldo() {
-  
+  contas.forEach((conta) =>{
+   let totalCompras = 0
+   for(i=0;i<conta.compras.length;i++){
+      totalCompras += Number(conta.compras[i])
+   }
+   conta.saldoTotal -= totalCompras
+  })
+  return contas
 }
