@@ -33,7 +33,7 @@ function retornaNumerosPares (array) {
 //Exercício 4
 
 function retornaMaiorNumero(array) {
-   // implemente sua lógica aqui
+   return Math.max.apply(null,array)
 }
 
 //Exercício 5
