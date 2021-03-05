@@ -8,7 +8,14 @@ function inverteArray(array) {
 //Exercício 2
 
 function retornaNumerosParesElevadosADois (array) {
-   // implemente sua lógica aqui
+   let arrayPar = []
+   for(number of array){
+      if(number%2==0){
+         number = number * number
+         arrayPar.push(number)
+      }
+   }
+   return arrayPar
 }
 
 //Exercício 3
