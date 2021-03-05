@@ -321,8 +321,19 @@ const consultas = [
   { nome: "Márcia", genero: "feminino", cancelada: false, dataDaConsulta: "04/11/2019" }
   ]
 
-function retornaEmailConsulta(consultas) {
-  // implemente sua lógica aqui
+function retornaEmailConsulta() {
+   const emailretorno = consultas.map((consulta) =>{
+      if(consulta.cancelada==false && consulta.genero=="masculino"){
+         return `Olá, Sr. ${consulta.nome}. Infelizmente sua consulta marcada para o dia ${consulta.dataDaConsulta} foi cancelada. Se quiser, pode entrar em contato conosco para remarcá-la.`
+      } else if(consulta.cancelada==false && consulta.genero=="feminino"){
+         return `Olá, Sra. ${consulta.nome}. Infelizmente sua consulta marcada para o dia ${consulta.dataDaConsulta} foi cancelada. Se quiser, pode entrar em contato conosco para remarcá-la.`
+      } else if(consulta.cancelada==true && consulta.genero=="masculino"){
+         return `Olá, Sr. ${consulta.nome}. Estamos enviando esta mensagem para lembrá-lo da sua consulta no dia ${consulta.dataDaConsulta}. Por favor, acuse o recebimento deste e-mail.`
+      } else {
+         return `Olá, Sra. ${consulta.nome}. Estamos enviando esta mensagem para lembrá-la da sua consulta no dia ${consulta.dataDaConsulta}. Por favor, acuse o recebimento deste e-mail.`
+      }
+   })
+   return emailretorno
 }
 
 //Exercício 20
@@ -337,5 +348,5 @@ const contas = [
 ]
 
 function atualizaSaldo() {
-  // implemente sua lógica aqui
+  
 }
