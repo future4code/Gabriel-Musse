@@ -68,7 +68,20 @@ const DeleteButton = styled.button`
     cursor: pointer;
   }
 `;
-
+const DetailsButton = styled.button`
+  background-color: #7969fa;
+  color: white;
+  border: 1px solid grey;
+  border-radius: 10px;
+  width: 60px;
+  padding: 1px;
+  margin-bottom: 2px;
+  transition: 150ms;
+  &:hover {
+    background-color: #4934eb;
+    cursor: pointer;
+  }
+`;
 export default class GetAllUsers extends React.Component {
   state = {
     users: [],
@@ -96,7 +109,6 @@ export default class GetAllUsers extends React.Component {
         console.log("Get Users Failed", err.message);
       });
   };
-
   deleteUser = (user) => {
     if (window.confirm(`Are you sure you want to delete ${user.name}?`)) {
       axios
@@ -123,13 +135,18 @@ export default class GetAllUsers extends React.Component {
     const usersList = this.state.users.map((user) => (
       <UsersListLi key={user.id}>
         {user.name}
-        <DeleteButton onClick={() => this.deleteUser(user)}>X</DeleteButton>
+        <div>
+          <DetailsButton onClick={() => this.props.getdetails(user)}>
+            Details
+          </DetailsButton>
+          <DeleteButton onClick={() => this.deleteUser(user)}>X</DeleteButton>
+        </div>
       </UsersListLi>
     ));
     return (
       <DivGetAllUsersPage>
         <DivButton>
-          <ChangeButton onClick={this.props.changepage}>Back</ChangeButton>
+          <ChangeButton onClick={this.props.goback}>Back</ChangeButton>
         </DivButton>
         <DivList>
           {this.state.users.length > 0 ? (
