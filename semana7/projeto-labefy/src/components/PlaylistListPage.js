@@ -28,11 +28,11 @@ const ListContainer = styled.div`
   width: 50%;
 `;
 const PlaylistInfo = styled.div`
-display:flex;
-align-items: center;
-justify-content: space-between;
-border-bottom: 1px solid grey;
-`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid grey;
+`;
 
 const NamesDiv = styled.div`
   margin: 10px;
@@ -40,13 +40,12 @@ const NamesDiv = styled.div`
   justify-content: space-between;
 `;
 
-
 const ButtonDiv = styled.div`
-  display:flex;
+  display: flex;
 `;
 
 const DeleteButton = styled.button`
-  background-color:#d94d34;
+  background-color: #d94d34;
   color: white;
   border: 1px solid grey;
   border-radius: 10px;
@@ -115,7 +114,6 @@ export default class CreatePlaylistPage extends React.Component {
   };
 
   render() {
-    console.log("playlists state:", this.state.playlists);
     return (
       <div>
         {this.state.playlists.length > 0 ? (
@@ -126,12 +124,14 @@ export default class CreatePlaylistPage extends React.Component {
                 <PlaylistInfo key={playlist.id}>
                   <NamesDiv>{playlist.name}</NamesDiv>
                   <ButtonDiv>
-                  <TracksButton onClick={() => this.props.getPlaylistTracks(playlist)}>
-                    Tracks
-                  </TracksButton>
-                  <DeleteButton onClick={() => this.deletePlaylist(playlist)}>
-                    Delete
-                  </DeleteButton>
+                    <TracksButton
+                      onClick={() => this.props.getPlaylistTracks(playlist)}
+                    >
+                      Tracks
+                    </TracksButton>
+                    <DeleteButton onClick={() => this.deletePlaylist(playlist)}>
+                      Delete
+                    </DeleteButton>
                   </ButtonDiv>
                 </PlaylistInfo>
               ))}

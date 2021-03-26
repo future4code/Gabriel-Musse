@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Logo from "../components/img/labefylogo.png";
 
 const Body = styled.div`
   background-color: #e3e8eb;
@@ -17,7 +18,17 @@ const TextDiv = styled.div`
   width: 940px;
   margin-left: auto;
   margin-right: auto;
-text-align: justify;
+  text-align: justify;
+`;
+
+const PageTitle = styled.h1`
+  margin: 0;
+  color: grey;
+`;
+
+const LogoDiv = styled.img`
+  height: 200px;
+  margin: 30px;
 `;
 
 export default class Home extends React.Component {
@@ -25,27 +36,17 @@ export default class Home extends React.Component {
     return (
       <Body>
         <TextDiv>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ligula
-          risus, egestas vel est eu, finibus dignissim ipsum. Aliquam at mollis
-          erat, a porttitor risus. Duis semper mauris eu elit mollis, in
-          consectetur ipsum efficitur. Suspendisse fringilla, tortor ut suscipit
-          ornare, mi lectus egestas elit, non pellentesque massa lacus ut diam.
-          Phasellus rhoncus justo non vehicula sollicitudin. Vivamus at mauris
-          id eros cursus porta sit amet sed mauris. Integer ut lacinia ipsum,
-          vel vulputate arcu. Sed vel auctor nunc, sed viverra mauris. Sed
-          tristique risus non vestibulum ultricies. Ut imperdiet tellus lectus,
-          sit amet porta diam sollicitudin mattis. Curabitur posuere, mauris vel
-          ultrices sollicitudin, mi dui placerat quam, a dictum eros nulla eget
-          nunc. Pellentesque eu imperdiet turpis. Quisque a purus vel massa
-          venenatis accumsan. Ut eu justo ut tellus feugiat rutrum vitae vitae
-          tellus. Sed non mattis nisl. Suspendisse nec tortor odio. Pellentesque
-          venenatis suscipit porttitor. Orci varius natoque penatibus et magnis
-          dis parturient montes, nascetur ridiculus mus. Orci varius natoque
-          penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-          Vivamus bibendum tristique feugiat. Praesent sed turpis ac nulla
-          condimentum venenatis vel vitae sem. Vestibulum luctus volutpat elit
-          nec consectetur. Curabitur ultrices feugiat nunc at condimentum. Etiam
-          consequat nibh hendrerit aliquet finibus.
+          <PageTitle>About Us</PageTitle>
+          <LogoDiv src={Logo} alt="logo" />
+          With Labefy, it’s easy to find the right music or podcast for every
+          moment – on your phone, your computer, your tablet and more.
+          <p>
+            There are millions of tracks and episodes on Labify. So whether
+            you’re behind the wheel, working out, partying or relaxing, the
+            right music or podcast is always at your fingertips. Choose what you
+            want to listen to, or let Labify surprise you.
+          </p>
+          <p>Soundtrack your life with Labefy. Subscribe or listen for free.</p>
         </TextDiv>
       </Body>
     );

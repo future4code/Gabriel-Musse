@@ -32,45 +32,124 @@ const NavDiv = styled.div`
 `;
 
 const LogoImgDiv = styled.img`
-  &:hover{
-    cursor:pointer;
-  }`;
+  &:hover {
+    cursor: pointer;
+  }
+`;
 
 const NavList = styled.div`
   display: flex;
 `;
 const NavListOption = styled.li`
   padding: 20px;
-  color: grey;
+  color: black;
   font-weight: bold;
-  &:hover{
-    cursor:pointer;
-    color:white;
+  &:hover {
+    cursor: pointer;
+    color: white;
   }
 `;
+const NavListSelected = styled.li`
+  padding: 20px;
+  color: #e89105;
+  font-weight: bold;
+`;
+
 export default class Header extends React.Component {
   render() {
-    return (
-      <HeaderDiv>
-        <HeaderContainer>
-          <LogoDiv onClick={this.props.goToHome}>
-            <LogoImgDiv src={Logo} alt="logo" />
-          </LogoDiv>
-          <NavDiv>
-            <NavList>
-            <NavListOption onClick={this.props.goToHome}>
-                Home
-              </NavListOption>
-              <NavListOption onClick={this.props.goToCreatePage}>
-                Create Playlist
-              </NavListOption>
-              <NavListOption onClick={this.props.goToListPage}>
-                Playlists
-              </NavListOption>
-            </NavList>
-          </NavDiv>
-        </HeaderContainer>
-      </HeaderDiv>
-    );
+    switch (this.props.actualPage) {
+      case "Home":
+        return (
+          <HeaderDiv>
+            <HeaderContainer>
+              <LogoDiv onClick={this.props.goToHome}>
+                <LogoImgDiv src={Logo} alt="logo" />
+              </LogoDiv>
+              <NavDiv>
+                <NavList>
+                  <NavListSelected onClick={this.props.goToHome}>
+                    About Us
+                  </NavListSelected>
+                  <NavListOption onClick={this.props.goToCreatePage}>
+                    Create Playlist
+                  </NavListOption>
+                  <NavListOption onClick={this.props.goToListPage}>
+                    Playlists
+                  </NavListOption>
+                </NavList>
+              </NavDiv>
+            </HeaderContainer>
+          </HeaderDiv>
+        );
+      case "CreatePlaylist":
+        return (
+          <HeaderDiv>
+            <HeaderContainer>
+              <LogoDiv onClick={this.props.goToHome}>
+                <LogoImgDiv src={Logo} alt="logo" />
+              </LogoDiv>
+              <NavDiv>
+                <NavList>
+                  <NavListOption onClick={this.props.goToHome}>
+                    About Us
+                  </NavListOption>
+                  <NavListSelected onClick={this.props.goToCreatePage}>
+                    Create Playlist
+                  </NavListSelected>
+                  <NavListOption onClick={this.props.goToListPage}>
+                    Playlists
+                  </NavListOption>
+                </NavList>
+              </NavDiv>
+            </HeaderContainer>
+          </HeaderDiv>
+        );
+      case "PlaylistList":
+        return (
+          <HeaderDiv>
+            <HeaderContainer>
+              <LogoDiv onClick={this.props.goToHome}>
+                <LogoImgDiv src={Logo} alt="logo" />
+              </LogoDiv>
+              <NavDiv>
+                <NavList>
+                  <NavListOption onClick={this.props.goToHome}>
+                    About Us
+                  </NavListOption>
+                  <NavListOption onClick={this.props.goToCreatePage}>
+                    Create Playlist
+                  </NavListOption>
+                  <NavListSelected onClick={this.props.goToListPage}>
+                    Playlists
+                  </NavListSelected>
+                </NavList>
+              </NavDiv>
+            </HeaderContainer>
+          </HeaderDiv>
+        );
+      case "PlaylistDetails":
+        return (
+          <HeaderDiv>
+            <HeaderContainer>
+              <LogoDiv onClick={this.props.goToHome}>
+                <LogoImgDiv src={Logo} alt="logo" />
+              </LogoDiv>
+              <NavDiv>
+                <NavList>
+                  <NavListOption onClick={this.props.goToHome}>
+                    About Us
+                  </NavListOption>
+                  <NavListOption onClick={this.props.goToCreatePage}>
+                    Create Playlist
+                  </NavListOption>
+                  <NavListSelected onClick={this.props.goToListPage}>
+                    Playlists
+                  </NavListSelected>
+                </NavList>
+              </NavDiv>
+            </HeaderContainer>
+          </HeaderDiv>
+        );
+    }
   }
 }

@@ -22,14 +22,14 @@ const BoxContainer = styled.div`
 `;
 
 const InputAdd = styled.input`
-width: 90%;
-padding: 0;
-margin: 5px;
-text-align: center;
-margin-bottom: 30px;
+  width: 90%;
+  padding: 0;
+  margin: 5px;
+  text-align: center;
+  margin-bottom: 30px;
 `;
 const CreateButton = styled.button`
-  background-color:#fd7d02;
+  background-color: #fd7d02;
   color: white;
   border: 1px solid grey;
   border-radius: 10px;
@@ -37,7 +37,7 @@ const CreateButton = styled.button`
   padding: 1px;
   transition: 150ms;
   &:hover {
-    background-color: #c76303; 
+    background-color: #c76303;
     cursor: pointer;
   }
 `;
@@ -47,15 +47,13 @@ const PageTitle = styled.h1`
   color: grey;
 `;
 
-const TextDiv = styled.div`
-
- `;
+const TextDiv = styled.div``;
 
 const ObsDiv = styled.div`
- color: grey;
- font-style: italic;
- margin-bottom: 20px;
- `;
+  color: grey;
+  font-style: italic;
+  margin-bottom: 20px;
+`;
 
 export default class CreatePlaylistPage extends React.Component {
   state = {
@@ -90,7 +88,9 @@ export default class CreatePlaylistPage extends React.Component {
         <PageTitle>Create Playlist</PageTitle>
         <BoxContainer>
           <TextDiv>Name:</TextDiv>
-          <ObsDiv>You cannot create a playlist with the same name of an existing one.</ObsDiv>
+          <ObsDiv>
+            You cannot create a playlist with the same name of an existing one.
+          </ObsDiv>
           <InputAdd
             placeholder="New playlist name"
             onChange={this.handleNamePlaylist}

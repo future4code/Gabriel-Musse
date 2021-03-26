@@ -11,7 +11,6 @@ import { baseUrl, axiosConfig } from "./components/parameters";
 
 const FullSite = styled.div`
   height: 100vh;
-  overflow: hidden;
 `;
 
 const Body = styled.div`
@@ -67,6 +66,7 @@ export default class App extends React.Component {
             track={this.state.tracks}
             playlist={this.state.playlists}
             getPlaylistTracks={this.getPlaylistTracks}
+            goToListPage={this.goToListPage}
           />
         );
     }
@@ -79,6 +79,7 @@ export default class App extends React.Component {
           goToHome={this.goToHome}
           goToListPage={this.goToListPage}
           goToCreatePage={this.goToCreatePage}
+          actualPage={this.state.actualPage}
         />
         <Body>{this.renderPage()}</Body>
         <Footer />
