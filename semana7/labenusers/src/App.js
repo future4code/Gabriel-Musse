@@ -1,27 +1,57 @@
 import React from "react";
-import styled from "styled-components";
 import AddUsers from "./components/AddUsers";
 import GetAllUsers from "./components/GetAllUsers";
+import GetUserById from "./components/GetUserById";
+import axios from "axios";
 
 export default class App extends React.Component {
   state = {
-    usersCreated: false,
+    actualPage: "AddUsers",
   };
 
-  createPage = () => {
-    this.setState({ usersCreated: true });
+  goToCreatePage = () => {
+    this.setState({ actualPage: "AddUsers" });
   };
 
-  listPage = () => {
-    this.setState({ usersCreated: false });
+  goToListPage = () => {
+    this.setState({ actualPage: "GetAllUsers" });
+  };
+
+  getUserById = (user) => {
+    axios
+      .get(
+        `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${user.id}`,
+        {
+          headers: {
+            Authorization: "gabriel-musse-cruz",
+          },
+        }
+      )
+      .then((res) => {
+        this.setState({ users: res.data });
+        console.log("Get User Successful", res);
+        this.setState({ actualPage: "DetailsPage" });
+      })
+      .catch((err) => {
+        console.log("Get User Failed", err);
+      });
   };
 
   render() {
     const renderWindow = () => {
-      if (this.state.usersCreated) {
-        return <GetAllUsers changepage={this.listPage} />;
-      } else {
-        return <AddUsers changepage={this.createPage} />;
+      if (this.state.actualPage === "AddUsers") {
+        return <AddUsers changepage={this.goToListPage} />;
+      } else if (this.state.actualPage === "GetAllUsers") {
+        return (
+          <GetAllUsers
+            goback={this.goToCreatePage}
+            getdetails={this.getUserById}
+          />
+        );
+      } else if (this.state.actualPage === "DetailsPage") {
+        return (
+          <GetUserById goback={this.goToListPage} user={this.state.users} />
+        );
       }
     };
     return <div className="App">{renderWindow()}</div>;
