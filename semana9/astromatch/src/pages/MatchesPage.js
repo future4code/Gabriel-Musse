@@ -7,7 +7,7 @@ const FullPage = styled.div`
 margin:0 auto;
 display: flex;
 justify-content:center;
-margin-top: 150px;
+margin-top: 100px;
 `
 const ContainerPage = styled.div`
 display:flex;

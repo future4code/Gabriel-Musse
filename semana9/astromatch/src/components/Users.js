@@ -3,7 +3,12 @@ import styled from "styled-components";
 import axios from "axios";
 import Heart from "../images/heart.png";
 import X from "../images/xbutton.png";
+import Logo from "../images/astrologo.png";
+import { RubberBand } from "animate-css-styled-components";
 
+const ImgLogo = styled.img`
+  width: 300px;
+`;
 const DivFundo = styled.div`
   background-image: linear-gradient(#00e5d5, #00b3e7);
   height: 100%;
@@ -22,11 +27,24 @@ const UsersDiv = styled.div`
 const TextDiv = styled.div`
   width: 350px;
   position: absolute;
-  bottom: 320px;
+  bottom: 370px;
   color: white;
   display: flex;
   flex-direction: column;
   text-shadow: 1px 1px 4px #000000;
+`;
+
+const TextoMensagemDiv = styled.div`
+  color: white;
+  text-shadow: 1px 1px 4px #000000;
+`;
+
+const MensagemDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 `;
 
 const TituloDiv = styled.div`
@@ -39,6 +57,7 @@ const UserImg = styled.img`
   width: 400px;
   box-shadow: 0px 0px 5px 8px rgba(0, 0, 0, 0.2);
   border-radius: 20px;
+  object-fit: cover;
 `;
 
 const BotoesDiv = styled.div`
@@ -61,6 +80,7 @@ const BotaoNao = styled.button`
   &:hover {
     background-color: #ff5050;
     transition: 150ms;
+    cursor: pointer;
   }
 `;
 
@@ -77,6 +97,7 @@ const BotaoSim = styled.button`
   &:hover {
     background-color: #0aaa14;
     transition: 150ms;
+    cursor: pointer;
   }
 `;
 
@@ -106,13 +127,6 @@ const BotaoReset = styled.button`
     cursor: pointer;
   }
 `;
-const MensagemDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-`;
 
 const HeartImg = styled.img`
   height: 30px;
@@ -130,6 +144,7 @@ const XImg = styled.img`
 
 const Users = () => {
   const [userList, setUserList] = useState({});
+  const [loading, setLoading] = useState(true);
 
   const pegarUser = () => {
     axios
@@ -138,6 +153,7 @@ const Users = () => {
       )
       .then((response) => {
         setUserList(response.data.profile);
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err);
@@ -150,7 +166,7 @@ const Users = () => {
 
   const darLike = () => {
     const body = {
-      id: `${userList.id}`,
+      id: userList.id,
       choice: true,
     };
 
@@ -160,6 +176,7 @@ const Users = () => {
         body
       )
       .then((response) => {
+        setLoading(true);
         pegarUser();
       })
       .catch((err) => {
@@ -169,7 +186,7 @@ const Users = () => {
 
   const darDislike = () => {
     const body = {
-      id: `${userList.id}`,
+      id: userList.id,
       choice: false,
     };
 
@@ -179,6 +196,7 @@ const Users = () => {
         body
       )
       .then((response) => {
+        setLoading(true);
         pegarUser();
       })
       .catch((err) => {
@@ -194,6 +212,7 @@ const Users = () => {
         )
         .then((response) => {
           alert(response.data.message);
+          setLoading(true);
           pegarUser();
         })
         .catch((err) => {
@@ -202,18 +221,20 @@ const Users = () => {
     }
   };
 
-  if (userList === null) {
+  if (userList === null && loading === false) {
     return (
-      <MensagemDiv>
-        <div>"Voce nao tem mais users para ver"</div>
-        <ResetDiv>
-          <BotaoReset onClick={darReset}>
-            Reset todos os likes e matches
-          </BotaoReset>
-        </ResetDiv>
-      </MensagemDiv>
+      <DivFundo>
+        <MensagemDiv>
+          <TextoMensagemDiv>Você não tem mais users para ver</TextoMensagemDiv>
+          <ResetDiv>
+            <BotaoReset onClick={darReset}>
+              Reset todos os likes e matches
+            </BotaoReset>
+          </ResetDiv>
+        </MensagemDiv>
+      </DivFundo>
     );
-  } else if (userList !== null){
+  } else if (userList && loading === false) {
     return (
       <DivFundo>
         <UsersDiv>
@@ -245,10 +266,14 @@ const Users = () => {
     );
   } else {
     return (
-     " Loading..."
-    )
+      <DivFundo>
+        <MensagemDiv>
+          <RubberBand duration="1s" delay="0">
+            <ImgLogo src={Logo}></ImgLogo>
+          </RubberBand>
+        </MensagemDiv>
+      </DivFundo>
+    );
   }
-
- 
 };
 export default Users;
