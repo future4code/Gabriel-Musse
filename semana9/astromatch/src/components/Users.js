@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import axios from "axios";
 import Heart from "../images/heart.png";
 import X from "../images/xbutton.png";
@@ -27,11 +27,12 @@ const UsersDiv = styled.div`
 const TextDiv = styled.div`
   width: 350px;
   position: absolute;
-  bottom: 370px;
+  bottom: 40%;
   color: white;
   display: flex;
   flex-direction: column;
   text-shadow: 1px 1px 4px #000000;
+  z-index: 0;
 `;
 
 const TextoMensagemDiv = styled.div`
@@ -205,7 +206,7 @@ const Users = () => {
   };
 
   const darReset = () => {
-    if (window.confirm(`Are you sure you want to reset?`)) {
+    if (window.confirm(`Tem certeza que você quer resetar?`)) {
       axios
         .put(
           "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/gabrielmussecruz/clear "
