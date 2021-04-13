@@ -1,0 +1,85 @@
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
+import SpaceTravel from "../img/spacetravel.png";
+import SpaceTravelOpacity from "../img/spacetravelopacity.png";
+import AdminArea from "../img/commandcenter.png";
+import AdminAreaOpacity from "../img/commandcenteropacity.png";
+import { useHistory } from "react-router-dom";
+import { goToListTripsPage, goToLoginPage } from "../routes/coordinator";
+
+const FullPage = styled.div`
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+`;
+const BodyDiv = styled.div`
+  display: flex;
+  height: 75vh;
+`;
+const LeftBody = styled.div`
+  width: 50%;
+  background-image: url(${SpaceTravel});
+  background-repeat: no-repeat;
+  background-size: cover;
+  &:hover {
+    cursor: pointer;
+    background-image: url(${SpaceTravelOpacity});
+  }
+`;
+const RightBody = styled.div`
+  width: 50%;
+  overflow: hidden;
+  background-image: url(${AdminArea});
+  background-repeat: no-repeat;
+  background-size: cover;
+  &:hover {
+    cursor: pointer;
+    background-image: url(${AdminAreaOpacity});
+  }
+`;
+
+const LeftBodyText = styled.div`
+  display: none;
+  height: 100%;
+  color: white;
+  font-size: 40px;
+  text-shadow: 1px 1px 4px #000000;
+  ${LeftBody}:hover & {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  } ;
+`;
+
+const RightBodyText = styled.div`
+  display: none;
+  height: 100%;
+  color: white;
+  font-size: 40px;
+  text-shadow: 1px 1px 4px #000000;
+  ${RightBody}:hover & {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  } ;
+`;
+
+const Homepage = () => {
+  const history = useHistory();
+  return (
+    <FullPage>
+      <BodyDiv>
+          
+        <LeftBody>
+        <LeftBodyText onClick={() => goToListTripsPage(history)}>See Trips</LeftBodyText>
+        </LeftBody>
+     
+        <RightBody>
+        <RightBodyText onClick={() => goToLoginPage(history)}>Admin Area</RightBodyText>
+        </RightBody>
+      </BodyDiv>
+
+    </FullPage>
+  );
+};
+export default Homepage;
