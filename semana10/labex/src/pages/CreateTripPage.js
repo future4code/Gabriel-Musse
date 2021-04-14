@@ -1,5 +1,10 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
+import { useProtectedPage } from "../hooks/useProtectedPage";
+import { goToAdminHomePage } from "../routes/coordinator";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { BASE_URL } from "../constants/urls";
 
 const FullPage = styled.div`
 margin: 0 auto;
@@ -11,10 +16,11 @@ display: flex;
 height: 75vh;
 `;
 const CreateTripPage = () => {
+    useProtectedPage();
     return (
         <FullPage>
             <BodyDiv>
-            "CreateTripPage teste"
+            <h1>Create Trip Page teste</h1>
             </BodyDiv>
         </FullPage>
     

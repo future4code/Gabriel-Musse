@@ -11,15 +11,15 @@ export const goToHomePage = (history) => {
 };
 
 export const goToAdminHomePage = (history) => {
-  history.push("/admin/trips/list");
+  history.replace("/admin/trips/list");
 };
 
 export const goToApplicationFormPage = (history) => {
   history.push("/trips/application");
 };
 
-export const goToTripDetailsPage = (history) => {
-  history.push("/admin/trips/:id");
+export const goToTripDetailsPage = (history, id) => {
+  history.push(`/admin/trips/${id}`);
 };
 
 export const goToCreateTripPage = (history) => {

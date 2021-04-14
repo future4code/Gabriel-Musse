@@ -7,6 +7,7 @@ import AdminAreaOpacity from "../img/commandcenteropacity.png";
 import { useHistory } from "react-router-dom";
 import { goToListTripsPage, goToLoginPage } from "../routes/coordinator";
 
+
 const FullPage = styled.div`
   margin: 0 auto;
   display: flex;
@@ -19,8 +20,10 @@ const BodyDiv = styled.div`
 const LeftBody = styled.div`
   width: 50%;
   background-image: url(${SpaceTravel});
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  position: relative;
   &:hover {
     cursor: pointer;
     background-image: url(${SpaceTravelOpacity});
@@ -30,8 +33,10 @@ const RightBody = styled.div`
   width: 50%;
   overflow: hidden;
   background-image: url(${AdminArea});
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  position: relative;
   &:hover {
     cursor: pointer;
     background-image: url(${AdminAreaOpacity});
@@ -66,16 +71,27 @@ const RightBodyText = styled.div`
 
 const Homepage = () => {
   const history = useHistory();
+
+ const goToCorrectPage = (history) => {
+  if (localStorage.getItem("token") !== null){
+    history.replace("/admin/trips/list");
+  }
+  else {
+    history.push("/login");
+  }
+ 
+};
+
   return (
     <FullPage>
       <BodyDiv>
-          
+
         <LeftBody>
         <LeftBodyText onClick={() => goToListTripsPage(history)}>See Trips</LeftBodyText>
         </LeftBody>
      
         <RightBody>
-        <RightBodyText onClick={() => goToLoginPage(history)}>Admin Area</RightBodyText>
+        <RightBodyText onClick={() => goToCorrectPage(history)}>Admin Area</RightBodyText>
         </RightBody>
       </BodyDiv>
 
