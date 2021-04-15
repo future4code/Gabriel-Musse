@@ -11,13 +11,16 @@ const FullPage = styled.div`
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+
 `;
+
 const BodyDiv = styled.div`
   display: flex;
   height: 75vh;
+  overflow: hidden;
 `;
 const LeftBody = styled.div`
-  width: 50%;
+  width: 50vw;
   background-image: url(${SpaceTravel});
   background-position: center;
   background-repeat: no-repeat;
@@ -29,7 +32,7 @@ const LeftBody = styled.div`
   }
 `;
 const RightBody = styled.div`
-  width: 50%;
+  width: 50vw;
   overflow: hidden;
   background-image: url(${AdminArea});
   background-position: center;

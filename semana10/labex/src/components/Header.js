@@ -8,47 +8,33 @@ import HomeHover from "../img/homehover.png"
 const HeaderDiv = styled.div`
   border-bottom: 1px solid black;
   padding: 10px;
-  width: 99%;
-  height: 10vh;
+  width: 100%;
+  height: 12vh;
   background-color: #e6d4e9;
+  overflow: hidden;
+  margin:0 auto;
+  box-sizing: border-box;
 `;
 
 const HeaderContainer = styled.div`
   width: 60%;
   margin:0 auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  overflow: hidden;
 
 `;
 
-const BotaoHome = styled.div`
+const LogoDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-`;
-
-const HomeImg = styled.img`
-  height: 5vh;
-  display: inline;
-  &:hover {
+  &:hover{
     cursor: pointer;
   }
-  ${BotaoHome}:hover & {
-    display: none;
-  } ;
 `;
 
-const HomeImgHover = styled.img`
-  display: none;
-  height: 5vh;
-  &:hover {
-    cursor: pointer;
-  }
-  ${BotaoHome}:hover & {
-    display: inline;
-  } ;
-`;
 
 
 
@@ -61,11 +47,9 @@ const Header = () => {
   return (
     <HeaderDiv>
       <HeaderContainer>
-        <LogoImg src={Logo}></LogoImg>
-          <BotaoHome onClick={() => goToHomePage(history)}>
-            <HomeImg src={Home}></HomeImg>
-            <HomeImgHover src={HomeHover}></HomeImgHover>
-          </BotaoHome>
+        <LogoDiv onClick={() => goToHomePage(history)}>
+        <LogoImg  src={Logo}></LogoImg>
+          </LogoDiv>
       </HeaderContainer>
     </HeaderDiv>
   );

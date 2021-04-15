@@ -1,14 +1,17 @@
 import styled from "styled-components";
-import Facebook from "../img/facebook.png"
+import Facebook from "../img/facebook.png";
 import Twitter from "../img/twitter.png";
 import Instagram from "../img/instagram.png";
 
 const FooterDiv = styled.div`
   border-top: 1px solid black;
-  padding: 10px;
-  width: 99%;
-  height: 10.5vh;
+  width: 100%;
+  height: 13vh;
+  padding: 1%;
   background-color: #4e0259;
+  overflow: hidden;
+  margin: 0;
+  box-sizing: border-box;
 `;
 
 const FooterContainer = styled.div`
