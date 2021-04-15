@@ -11,6 +11,9 @@ import PageTitle from "../components/PageTitle";
 const FullPage = styled.div`
   margin: 0 auto;
   width: 60%;
+  @media (max-width: 1000px) {
+    width: 95%;
+  }
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -180,9 +183,9 @@ const CreateTripPage = () => {
               required
               name={"description"}
               placeholder="Trip Description"
-              pattern={"^.{20,}$"}
+              pattern={"^.{30,}$"}
               onChange={onChange}
-              title={"Minimum 20 characters"}
+              title={"Minimum 30 characters"}
             />
             <p>Trip Duration</p>
             <FormInput
@@ -190,7 +193,7 @@ const CreateTripPage = () => {
               type="number"
               required
               name={"durationInDays"}
-              min="0"
+              min="50"
               placeholder="Trip Duration"
               onChange={onChange}
             />

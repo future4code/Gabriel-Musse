@@ -1,13 +1,18 @@
 import styled from "styled-components";
 import { BASE_URL } from "../constants/urls";
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
 import PageTitle from "../components/PageTitle";
 import { useHistory } from "react-router-dom";
 import { goToAdminHomePage } from "../routes/coordinator";
+import useForm from "../hooks/useForm";
+
 const FullPage = styled.div`
   margin: 0 auto;
   width: 60%;
+  @media (max-width: 700px) {
+    width: 95%;
+  }
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -19,16 +24,10 @@ const BodyDiv = styled.div`
   min-height: 75vh;
 `;
 
-
 const ObsDiv = styled.div`
   color: grey;
   font-style: italic;
 `;
-
-const Input = styled.input`
-width: 50%;
-margin-top: 20px;
-`
 
 const Button = styled.button`
   min-width: 10%;
@@ -53,29 +52,42 @@ const Button = styled.button`
   }
 `;
 
+const FormContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  margin: 0;
+`;
+
+const Form = styled.form`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+`;
+const FormInput = styled.input`
+  width: 50%;
+`;
+
 const LoginPage = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const history = useHistory();
 
-  const handleEmail = (e) => {
-    setEmail(e.target.value);
-  };
+  const { form, onChange } = useForm({
+    email: "",
+    password: "",
+  });
 
-  const handlePassword = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const login = () => {
+  const login = (event) => {
     const body = {
-      email: email,
-      password: password,
+      email: form.email,
+      password: form.password,
     };
-
+    event.preventDefault();
     axios
       .post(`${BASE_URL}/login`, body)
       .then((res) => {
-        console.log(res.data);
         window.localStorage.setItem("token", res.data.token);
         goToAdminHomePage(history);
       })
@@ -91,9 +103,31 @@ const LoginPage = () => {
         <PageTitle titulo="Login" />
         <ObsDiv>email: gabrielmusse@gmail.com.br</ObsDiv>
         <ObsDiv>password: 123456</ObsDiv>
-        <Input value={email} onChange={handleEmail} placeholder="E-mail" />
-        <Input value={password} onChange={handlePassword} placeholder="Senha" />
-        <Button onClick={login}>Login</Button>
+
+        <FormContainer onSubmit={login}>
+          <Form>
+            <p>E-mail</p>
+            <FormInput
+              value={form.email}
+              required
+              name="email"
+              placeholder="E-mail"
+              onChange={onChange}
+              pattern={"[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,}$"}
+              title={"Invalid e-mail"}
+            />
+            <p>Password</p>
+            <FormInput
+              value={form.password}
+              required
+              name="password"
+              type="password"
+              placeholder="Password"
+              onChange={onChange}
+            />
+            <Button onClick={login}>Login</Button>
+          </Form>
+        </FormContainer>
       </BodyDiv>
     </FullPage>
   );

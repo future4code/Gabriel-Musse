@@ -2,8 +2,6 @@ import { useHistory } from "react-router-dom";
 import { goToHomePage } from "../routes/coordinator";
 import styled from "styled-components";
 import Logo from "../img/logo.png";
-import Home from "../img/home.png";
-import HomeHover from "../img/homehover.png"
 
 const HeaderDiv = styled.div`
   border-bottom: 1px solid black;

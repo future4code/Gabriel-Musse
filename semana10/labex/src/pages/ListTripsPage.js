@@ -16,6 +16,9 @@ const LoadingBodyDiv = styled.div`
 const FullPage = styled.div`
   margin: 0 auto;
   width: 60%;
+  @media (max-width: 700px) {
+    width: 90%;
+  }
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -88,17 +91,36 @@ const FiltersDiv = styled.div`
 const SearchFilter = styled.input``;
 
 const SortDiv = styled.select`
-  width: 30%;
+  width: 50%;
+  @media (max-width: 700px) {
+    width: 100px;
+  }
+  @media (max-width: 1000px) {
+    width: 150px;
+  }
 `;
-const TituloFiltro = styled.label`
+const FilterTitle = styled.label`
   font-size: 17px;
   margin-bottom: 7px;
+`;
+const SearchTitle = styled.label`
+  font-size: 17px;
+  margin-bottom: 7px;
+  @media (max-width: 1000px) {
+    text-align: end;
+  }
 `;
 
 const InputDiv = styled.div`
   display: flex;
   flex-direction: column;
   width: 30%;
+  @media (max-width: 700px) {
+    width: 300px;
+  }
+  @media (max-width: 1000px) {
+    width: 450px;
+  }
 `;
 
 const ButtonDiv = styled.div`
@@ -174,7 +196,7 @@ const ListTripsPage = () => {
         <PageTitle titulo="Trip List" />
         <FiltersDiv>
           <InputDiv>
-            <TituloFiltro>Sort by</TituloFiltro>
+            <FilterTitle>Sort by</FilterTitle>
             <SortDiv onChange={changeSort} defaultValue={"DEFAULT"}>
               <option value={"DEFAULT"}>Select an option</option>
               <option value={"Planet"}>Planet</option>
@@ -182,7 +204,7 @@ const ListTripsPage = () => {
             </SortDiv>
           </InputDiv>
           <InputDiv>
-            <TituloFiltro>Search</TituloFiltro>
+            <SearchTitle>Search</SearchTitle>
             <SearchFilter
               onChange={changeNameSearch}
               placeholder="Search by name, description or planet"

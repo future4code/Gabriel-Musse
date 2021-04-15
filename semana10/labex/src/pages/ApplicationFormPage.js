@@ -19,6 +19,9 @@ const LoadingBodyDiv = styled.div`
 const FullPage = styled.div`
   margin: 0 auto;
   width: 60%;
+  @media (max-width: 700px) {
+    width: 90%;
+  }
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -165,7 +168,7 @@ const ApplicationFormPage = () => {
                 {tripList.map((trip) => {
                   return (
                     <option value={trip.id} key={trip.id}>
-                      {trip.name}
+                      {trip.name} - {trip.planet}
                     </option>
                   );
                 })}
@@ -177,8 +180,8 @@ const ApplicationFormPage = () => {
                 name={"name"}
                 placeholder="Name"
                 onChange={onChange}
-                pattern={"^.{5,}$"}
-                title={"Minimum 5 characters"}
+                pattern={"^.{3,}$"}
+                title={"Minimum 3 characters"}
               />
               <p>Age</p>
               <FormInput
@@ -186,7 +189,7 @@ const ApplicationFormPage = () => {
                 type="number"
                 required
                 name={"age"}
-                min="10"
+                min="18"
                 placeholder="Age"
                 onChange={onChange}
               />
@@ -197,8 +200,8 @@ const ApplicationFormPage = () => {
                 name={"profession"}
                 placeholder="Profession"
                 onChange={onChange}
-                pattern={"^.{3,}$"}
-                title={"Minimum 3 characters"}
+                pattern={"^.{10,}$"}
+                title={"Minimum 10 characters"}
               />
               <p>Country</p>
               <FormSelect
@@ -223,8 +226,8 @@ const ApplicationFormPage = () => {
                 name={"applicationText"}
                 placeholder="Application Text"
                 onChange={onChange}
-                pattern={"^.{20,}$"}
-                title={"Minimum 20 characters"}
+                pattern={"^.{30,}$"}
+                title={"Minimum 30 characters"}
               />
               <SendButton type="submit">Send Form</SendButton>
             </Form>

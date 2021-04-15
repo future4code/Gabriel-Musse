@@ -11,7 +11,6 @@ const FullPage = styled.div`
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-
 `;
 
 const BodyDiv = styled.div`
@@ -68,6 +67,10 @@ const RightBodyText = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    @media (max-width: 700px) {
+      margin: 0;
+      text-align: center;
+    }
   } ;
 `;
 

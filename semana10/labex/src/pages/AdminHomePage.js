@@ -19,6 +19,12 @@ const LoadingBodyDiv = styled.div`
 const FullPage = styled.div`
   margin: 0 auto;
   width: 60%;
+  @media (max-width: 700px) {
+    width: 70%;
+  }
+  @media (min-width: 1000px) {
+    width: 95%;
+  }
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -39,6 +45,10 @@ const TripContainer = styled.div`
   border-radius: 15px;
   height: 50px;
   width: 500px;
+  @media (max-width: 700px) {
+    width: 100%;
+    padding: 5px;
+  }
   padding: 20px;
   margin-top: 10px;
   text-shadow: 1px 1px 10px white;
@@ -47,9 +57,17 @@ const TripContainer = styled.div`
 const TripName = styled.h1`
   font-size: 20px;
   margin: 0;
+  @media (max-width: 700px) {
+    font-size: 15px;
+  }
 `;
 
-const ButtonDiv = styled.div``;
+const ButtonDiv = styled.div`
+  display: flex;
+  @media (max-width: 700px) {
+    justify-content: flex-end;
+  }
+`;
 const LastButtonsDiv = styled.div`
   display: flex;
 `;
@@ -60,7 +78,33 @@ const Button = styled.button`
   align-self: center;
   margin-bottom: 20px;
   margin-top: 20px;
+  @media (max-width: 700px) {
+    width: 50%;
+    font-size: 10px;
+    padding: 0;
+  }
+  text-transform: uppercase;
+  border: 3px solid #4e0259;
+  border-radius: 7px;
+  background-color: white;
+  color: #4e0259;
+  &:hover {
+    background-color: #4e0259;
+    color: white;
+    transition: 150ms;
+    cursor: pointer;
+  }
+  :focus {
+    outline: none;
+  }
+`;
 
+const CreateButton = styled.button`
+  min-width: 10%;
+  padding: 10px;
+  align-self: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
   text-transform: uppercase;
   border: 3px solid #4e0259;
   border-radius: 7px;
@@ -84,6 +128,11 @@ const DeleteButton = styled.button`
   margin-bottom: 20px;
   margin-top: 20px;
   margin-left: 10px;
+  @media (max-width: 700px) {
+    margin: 0;
+    font-size: 10px;
+    padding: 2px;
+  }
   text-transform: uppercase;
   border: 3px solid #4e0259;
   border-radius: 7px;
@@ -193,9 +242,9 @@ const AdminHomePage = () => {
             );
           })}
           <LastButtonsDiv>
-            <Button onClick={() => goToCreateTripPage(history)}>
+            <CreateButton onClick={() => goToCreateTripPage(history)}>
               Create Trip
-            </Button>
+            </CreateButton>
             <LogoutButton onClick={logout}>Logout</LogoutButton>
           </LastButtonsDiv>
         </BodyDiv>

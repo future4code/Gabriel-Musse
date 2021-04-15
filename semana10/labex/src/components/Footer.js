@@ -21,19 +21,34 @@ const FooterContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   color: white;
+  @media (max-width: 700px) {
+    width: 100%;
+  }
+  @media (max-width: 1800px) {
+  }
 `;
 const LeftDiv = styled.div`
   width: 50%;
+  height: 13vh;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: flex-start;
+  @media (max-width: 700px) {
+    margin-left: 5px;
+  }
 `;
 const RightDiv = styled.div`
   width: 50%;
+  height: 13vh;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-end;
+  @media (max-width: 700px) {
+    margin-right: 5px;
+  }
+  @media (max-width: 1800px) {
+  }
 `;
 const SocialDiv = styled.div`
   display: flex;
@@ -47,6 +62,23 @@ const SocialDiv = styled.div`
     cursor: pointer;
     background-color: black;
   }
+  @media (max-width: 700px) {
+    margin: 0;
+    height: 30px;
+    width: 30px;
+  }
+  @media (max-width: 1800px) {
+  }
+`;
+
+const LeftText = styled.p`
+  margin-bottom: 10px;
+  margin-top: 0;
+  @media (max-width: 700px) {
+    margin: 0;
+    word-break: break-all;
+    font-size: 15px;
+  }
 `;
 
 const Footer = () => {
@@ -54,8 +86,8 @@ const Footer = () => {
     <FooterDiv>
       <FooterContainer>
         <LeftDiv>
-          <p>2021 Gabriel Dienstmann Musse ©</p>
-          All rights reserved - Labenu
+          <LeftText>2021 Gabriel Dienstmann Musse ©</LeftText>
+          <LeftText>All rights reserved Labenu</LeftText>
         </LeftDiv>
         <RightDiv>
           <SocialDiv

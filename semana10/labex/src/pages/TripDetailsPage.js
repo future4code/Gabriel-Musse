@@ -18,6 +18,9 @@ const LoadingBodyDiv = styled.div`
 const FullPage = styled.div`
   margin: 0 auto;
   width: 60%;
+  @media (max-width: 1000px) {
+    width: 95%;
+  }
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -26,6 +29,7 @@ const BodyDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
   min-height: 75vh;
 `;
 
@@ -33,6 +37,9 @@ const CandidatesDiv = styled.div`
   border: 2px solid #c443aa;
   border-radius: 20px;
   width: 50%;
+  @media (max-width: 1000px) {
+    width: 95%;
+  }
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -43,6 +50,9 @@ const ApprovedDiv = styled.div`
   border: 2px solid #c443aa;
   border-radius: 20px;
   width: 50%;
+  @media (max-width: 1000px) {
+    width: 95%;
+  }
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -55,7 +65,6 @@ const AproveButton = styled.button`
   padding: 10px;
   align-self: center;
   margin-bottom: 20px;
-  margin-top: 40px;
   text-transform: uppercase;
   border: 3px solid green;
   border-radius: 7px;
@@ -77,7 +86,6 @@ const ReproveButton = styled.button`
   padding: 10px;
   align-self: center;
   margin-bottom: 20px;
-  margin-top: 40px;
   margin-left: 10px;
   text-transform: uppercase;
   border: 3px solid red;
