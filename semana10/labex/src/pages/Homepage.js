@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import SpaceTravel from "../img/spacetravel.png";
 import SpaceTravelOpacity from "../img/spacetravelopacity.png";
 import AdminArea from "../img/commandcenter.png";
 import AdminAreaOpacity from "../img/commandcenteropacity.png";
 import { useHistory } from "react-router-dom";
-import { goToListTripsPage, goToLoginPage } from "../routes/coordinator";
-
+import { goToListTripsPage } from "../routes/coordinator";
 
 const FullPage = styled.div`
   margin: 0 auto;
@@ -72,29 +71,29 @@ const RightBodyText = styled.div`
 const Homepage = () => {
   const history = useHistory();
 
- const goToCorrectPage = (history) => {
-  if (localStorage.getItem("token") !== null){
-    history.replace("/admin/trips/list");
-  }
-  else {
-    history.push("/login");
-  }
- 
-};
+  const goToCorrectPage = (history) => {
+    if (localStorage.getItem("token") !== null) {
+      history.replace("/admin/trips/list");
+    } else {
+      history.push("/login");
+    }
+  };
 
   return (
     <FullPage>
       <BodyDiv>
-
         <LeftBody>
-        <LeftBodyText onClick={() => goToListTripsPage(history)}>See Trips</LeftBodyText>
+          <LeftBodyText onClick={() => goToListTripsPage(history)}>
+            See Trips
+          </LeftBodyText>
         </LeftBody>
-     
+
         <RightBody>
-        <RightBodyText onClick={() => goToCorrectPage(history)}>Admin Area</RightBodyText>
+          <RightBodyText onClick={() => goToCorrectPage(history)}>
+            Admin Area
+          </RightBodyText>
         </RightBody>
       </BodyDiv>
-
     </FullPage>
   );
 };

@@ -7,6 +7,14 @@ import PageTitle from "../components/PageTitle";
 import { useHistory } from "react-router-dom";
 import { goToTripDetailsPage } from "../routes/coordinator";
 import { goToCreateTripPage } from "../routes/coordinator";
+import Loading from "../components/Loading";
+
+const LoadingBodyDiv = styled.div`
+  display: flex;
+  margin-top: 50px;
+  justify-content: center;
+  min-height: 75vh;
+`;
 
 const FullPage = styled.div`
   margin: 0 auto;
@@ -16,9 +24,9 @@ const FullPage = styled.div`
   box-sizing: border-box;
 `;
 const BodyDiv = styled.div`
-  display: grid;
-  grid-template-columns: 100%;
-  grid-gap: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   min-height: 75vh;
   @media (min-width: 1200px) {
     grid-template-columns: repeat(2, 1fr);
@@ -29,17 +37,16 @@ const BodyDiv = styled.div`
 `;
 
 const TripContainer = styled.div`
-  display: grid;
-  justify-self: center;
+  display: flex;
   align-items: center;
-  justify-items: center;
-  text-align: center;
+  justify-content: space-between;
   border: 2px solid #4e0259;
   background-image: linear-gradient(to bottom right, white, #4e0259);
   border-radius: 15px;
-  height: 280px;
-  width: 300px;
+  height: 50px;
+  width: 500px;
   padding: 20px;
+  margin-top: 10px;
   text-shadow: 1px 1px 10px white;
 `;
 
@@ -48,9 +55,9 @@ const TripName = styled.h1`
   margin: 0;
 `;
 
-const TripSubTitle = styled.p`
-  margin-top: 2px;
-  margin-bottom: 0;
+const ButtonDiv = styled.div``;
+const LastButtonsDiv = styled.div`
+  display: flex;
 `;
 
 const Button = styled.button`
@@ -59,6 +66,7 @@ const Button = styled.button`
   align-self: center;
   margin-bottom: 20px;
   margin-top: 20px;
+
   text-transform: uppercase;
   border: 3px solid #4e0259;
   border-radius: 7px;
@@ -66,6 +74,52 @@ const Button = styled.button`
   color: #4e0259;
   &:hover {
     background-color: #4e0259;
+    color: white;
+    transition: 150ms;
+    cursor: pointer;
+  }
+  :focus {
+    outline: none;
+  }
+`;
+
+const DeleteButton = styled.button`
+  min-width: 10%;
+  padding: 10px;
+  align-self: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  margin-left: 10px;
+  text-transform: uppercase;
+  border: 3px solid #4e0259;
+  border-radius: 7px;
+  background-color: white;
+  color: red;
+  &:hover {
+    background-color: red;
+    color: white;
+    transition: 150ms;
+    cursor: pointer;
+  }
+  :focus {
+    outline: none;
+  }
+`;
+
+const LogoutButton = styled.button`
+  min-width: 10%;
+  padding: 10px;
+  align-self: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  margin-left: 10px;
+  text-transform: uppercase;
+  border: 3px solid #c443aa;
+  border-radius: 7px;
+  background-color: white;
+  color: #c443aa;
+  &:hover {
+    background-color: #c443aa;
     color: white;
     transition: 150ms;
     cursor: pointer;
@@ -87,12 +141,29 @@ const AdminHomePage = () => {
       .then((response) => {
         setTripList(response.data.trips);
         setLoading(false);
-        console.log("response:", response.data);
-        console.log("triplist:", tripList);
       })
       .catch((err) => {
         console.log(err);
       });
+  };
+
+  const deleteTrip = (trip) => {
+    const token = window.localStorage.getItem("token");
+    if (window.confirm(`Are you sure you want to delete ${trip.name}?`)) {
+      axios
+        .delete(`${BASE_URL}/trips/${trip.id}`, {
+          headers: {
+            auth: token,
+          },
+        })
+        .then((response) => {
+          alert(`${trip.name} deleted`);
+          getTripsList();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
 
   useEffect(() => {
@@ -107,28 +178,43 @@ const AdminHomePage = () => {
   if (tripList.length !== 0 && loading === false) {
     return (
       <FullPage>
-        <PageTitle titulo="Trip List" />
+        <PageTitle titulo="Admin Panel" />
         <BodyDiv>
           {tripList.map((trip) => {
             return (
               <TripContainer key={trip.name}>
                 <TripName>{trip.name}</TripName>
-                <Button
-                  onClick={() => goToTripDetailsPage(history, trip.id)}
-                  key={trip.name}
-                >
-                  Check Details
-                </Button>
+                <ButtonDiv>
+                  <Button
+                    onClick={() => goToTripDetailsPage(history, trip.id)}
+                    key={trip.name}
+                  >
+                    Check Details
+                  </Button>
+                  <DeleteButton onClick={() => deleteTrip(trip)}>
+                    Delete
+                  </DeleteButton>
+                </ButtonDiv>
               </TripContainer>
             );
           })}
+          <LastButtonsDiv>
+            <Button onClick={() => goToCreateTripPage(history)}>
+              Create Trip
+            </Button>
+            <LogoutButton onClick={logout}>Logout</LogoutButton>
+          </LastButtonsDiv>
         </BodyDiv>
-        <Button onClick={() => goToCreateTripPage(history)}>Create Trip</Button>
-        <Button onClick={logout}>Logout</Button>
       </FullPage>
     );
   } else if (loading === true) {
-    return <FullPage>Loading</FullPage>;
+    return (
+      <FullPage>
+        <LoadingBodyDiv>
+          <Loading />
+        </LoadingBodyDiv>
+      </FullPage>
+    );
   }
 };
 

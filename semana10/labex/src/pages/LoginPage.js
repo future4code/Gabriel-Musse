@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { BASE_URL } from "../constants/urls";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import PageTitle from "../components/PageTitle";
 import { useHistory } from "react-router-dom";
@@ -14,13 +14,13 @@ const FullPage = styled.div`
 const BodyDiv = styled.div`
   display: flex;
   flex-direction: column;
- min-height: 75vh;
+  min-height: 75vh;
 `;
 
 const ObsDiv = styled.div`
-color: grey;
-font-style: italic;
-`
+  color: grey;
+  font-style: italic;
+`;
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -57,7 +57,7 @@ const LoginPage = () => {
   return (
     <FullPage>
       <BodyDiv>
-        <h1>Login</h1>
+        <PageTitle titulo="Login" />
         <ObsDiv>email: gabrielmusse@gmail.com.br</ObsDiv>
         <ObsDiv>password: 123456</ObsDiv>
         <input value={email} onChange={handleEmail} placeholder="E-mail" />

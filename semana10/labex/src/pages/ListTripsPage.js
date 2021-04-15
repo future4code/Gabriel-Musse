@@ -5,7 +5,14 @@ import axios from "axios";
 import PageTitle from "../components/PageTitle";
 import { useHistory } from "react-router-dom";
 import { goToApplicationFormPage } from "../routes/coordinator";
+import Loading from "../components/Loading";
 
+const LoadingBodyDiv = styled.div`
+  display: flex;
+  margin-top: 50px;
+  justify-content: center;
+  min-height: 75vh;
+`;
 const FullPage = styled.div`
   margin: 0 auto;
   width: 60%;
@@ -13,11 +20,12 @@ const FullPage = styled.div`
   flex-direction: column;
   box-sizing: border-box;
 `;
+
 const BodyDiv = styled.div`
   display: grid;
   grid-template-columns: 100%;
   grid-gap: 20px;
-  min-height: 75vh;
+  min-height: 60vh;
   @media (min-width: 1200px) {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -93,6 +101,13 @@ const InputDiv = styled.div`
   width: 30%;
 `;
 
+const ButtonDiv = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 const ListTripsPage = () => {
   const history = useHistory();
   const [tripList, setTripList] = useState([]);
@@ -106,8 +121,6 @@ const ListTripsPage = () => {
       .then((response) => {
         setTripList(response.data.trips);
         setLoading(false);
-        console.log("response:", response.data);
-        console.log("triplist:", tripList);
       })
       .catch((err) => {
         console.log(err);
@@ -139,6 +152,8 @@ const ListTripsPage = () => {
           return a.planet.localeCompare(b.planet);
         } else if (sort === "Duration") {
           return a.durationInDays - b.durationInDays;
+        } else {
+          return true;
         }
       });
   };
@@ -160,8 +175,8 @@ const ListTripsPage = () => {
         <FiltersDiv>
           <InputDiv>
             <TituloFiltro>Sort by</TituloFiltro>
-            <SortDiv onChange={changeSort}>
-              <option selected>Select</option>
+            <SortDiv onChange={changeSort} defaultValue={"DEFAULT"}>
+              <option value={"DEFAULT"}>Select an option</option>
               <option value={"Planet"}>Planet</option>
               <option value={"Duration"}>Duration</option>
             </SortDiv>
@@ -177,7 +192,7 @@ const ListTripsPage = () => {
         <BodyDiv>
           {filteredList.map((trip) => {
             return (
-              <TripContainer>
+              <TripContainer key={trip.id}>
                 <TripName>{trip.name}</TripName>
                 <TripSubTitle>{trip.description}</TripSubTitle>
                 <TripSubTitle>Planet: {trip.planet}</TripSubTitle>
@@ -189,13 +204,21 @@ const ListTripsPage = () => {
             );
           })}
         </BodyDiv>
-        <SignUpButton onClick={() => goToApplicationFormPage(history)}>
-          Sign up
-        </SignUpButton>
+        <ButtonDiv>
+          <SignUpButton onClick={() => goToApplicationFormPage(history)}>
+            Sign up
+          </SignUpButton>
+        </ButtonDiv>
       </FullPage>
     );
   } else if (loading === true) {
-    return <FullPage>Loading</FullPage>;
+    return (
+      <FullPage>
+        <LoadingBodyDiv>
+          <Loading />
+        </LoadingBodyDiv>
+      </FullPage>
+    );
   }
 };
 

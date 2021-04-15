@@ -5,7 +5,7 @@ import Homepage from "./Homepage";
 import ListTripsPage from "./ListTripsPage";
 import LoginPage from "./LoginPage";
 import TripDetailsPage from "./TripDetailsPage";
-import ErrorPage from "./ErrorPage"
+import ErrorPage from "./ErrorPage";
 
 export {
   AdminHomePage,
@@ -15,5 +15,5 @@ export {
   ListTripsPage,
   LoginPage,
   TripDetailsPage,
-  ErrorPage
+  ErrorPage,
 };
