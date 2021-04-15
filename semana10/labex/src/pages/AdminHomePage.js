@@ -28,12 +28,6 @@ const BodyDiv = styled.div`
   flex-direction: column;
   align-items: center;
   min-height: 75vh;
-  @media (min-width: 1200px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  @media (min-width: 1800px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
 `;
 
 const TripContainer = styled.div`
