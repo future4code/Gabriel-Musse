@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import styled, { keyframes } from 'styled-components';
-import PokeBall from '../images/pokeball.png';
+import React, { Component } from "react";
+import styled, { keyframes } from "styled-components";
+import logoloading from "../assets/images/logoloading.png";
 
 const spin = keyframes`
 0% { 
@@ -11,8 +11,9 @@ const spin = keyframes`
 }
 `;
 
-const PokeBallImg = styled.img`
+const LogoImg = styled.img`
   animation: ${spin} 2s linear infinite;
+  width: 10vw;
 `;
 
 const Wrapper = styled.div`
@@ -21,14 +22,14 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20vh;
+  margin-top: 5vh;
 `;
 
 class Loader extends Component {
   render() {
     return (
       <Wrapper>
-        <PokeBallImg src={PokeBall} />
+        <LogoImg src={logoloading} />
       </Wrapper>
     );
   }

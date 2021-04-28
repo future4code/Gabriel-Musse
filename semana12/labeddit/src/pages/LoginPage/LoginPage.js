@@ -6,6 +6,7 @@ import LoginForm from "./LoginForm";
 import { goToSignUp } from "../../routes/coordinator";
 import { useHistory } from "react-router-dom";
 import useUnprotectedPage from "../../hooks/useUnprotectedPage";
+import AlertModified from "../../components/Alert";
 
 const LoginPage = () => {
   useUnprotectedPage();
@@ -25,6 +26,7 @@ const LoginPage = () => {
           Sign Up
         </Button>
       </SignUpButtonContainer>
+      <AlertModified />
     </ScreenContainer>
   );
 };

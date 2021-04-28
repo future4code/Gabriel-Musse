@@ -17,3 +17,7 @@ export const goToCreatePostPage = (history) => {
 export const goToPostPage = (history, id) => {
   history.push(`/post/${id}`);
 };
+
+export const goToPreviousPage = (history) => {
+  history.goBack();
+};

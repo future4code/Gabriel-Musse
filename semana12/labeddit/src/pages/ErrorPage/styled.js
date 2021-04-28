@@ -1,5 +1,15 @@
 import styled from "styled-components";
 
-export const teste = styled.div`
-  width: 100%;
+export const ErrorPageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+`;
+
+export const ErrorImage = styled.img`
+  width: 80vw;
+  max-width: 450px;
+  margin-top: 20vh;
 `;
