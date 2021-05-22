@@ -70,6 +70,7 @@ let users: User[] = [
   },
 ];
 
+//Get all users
 app.get("/users", (req: Request, res: Response) => {
   try {
     res.status(200).send(users);
@@ -80,6 +81,7 @@ app.get("/users", (req: Request, res: Response) => {
   }
 });
 
+//Add user
 app.post("/users", (req: Request, res: Response) => {
   try {
     const { name, cpf, dateOfBirth } = req.body;
@@ -117,6 +119,7 @@ app.post("/users", (req: Request, res: Response) => {
   }
 });
 
+//Get user's balance passing CPF as parameter
 app.get("/users/:cpf", (req: Request, res: Response) => {
   try {
     const cpfParams = req.params.cpf as string;
@@ -146,6 +149,7 @@ app.get("/users/:cpf", (req: Request, res: Response) => {
   }
 });
 
+//Add a deposit
 app.put("/users/add", (req: Request, res: Response) => {
   try {
     const cpfQuery = req.body.cpf as string;
@@ -184,6 +188,7 @@ app.put("/users/add", (req: Request, res: Response) => {
   }
 });
 
+//Add or schedule payment
 app.post("/users/pay", (req: Request, res: Response) => {
   try {
     const { cpf, value, description } = req.body;
@@ -229,6 +234,7 @@ app.post("/users/pay", (req: Request, res: Response) => {
   }
 });
 
+//Update user's balance passing cpf as parameter
 app.put("/users/:cpf/update", (req: Request, res: Response) => {
   try {
     const cpfParams = req.params.cpf as string;
@@ -280,6 +286,7 @@ app.put("/users/:cpf/update", (req: Request, res: Response) => {
   }
 });
 
+//Make a transfer between accounts, passing both cpfs and names
 app.post("/users/transfer", (req: Request, res: Response) => {
   try {
     const { yourName, yourCpf, recipientName, recipientCpf, value } = req.body;
