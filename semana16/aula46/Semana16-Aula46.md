@@ -80,24 +80,24 @@ SELECT SUM(salary) FROM Actor
 
 **a.** A query separa as atrizes em um grupo e os atores em outro, e conta quantos tem em cada grupo.
 
-**b**
+**b.**
 ```
 SELECT id, name FROM Actor
 ORDER BY name DESC
 WHERE gender = 'male'
 ```
-**c**
+**c.**
 ```
 SELECT * FROM Actor
 ORDER BY salary;
 ```
-**d**
+**d.**
 ```
 SELECT * FROM Actor
 ORDER BY salary DESC
 LIMIT 3;
 ```
-**e**
+**e.**
 ```
 SELECT AVG(salary), gender FROM Actor
 GROUP BY gender;
