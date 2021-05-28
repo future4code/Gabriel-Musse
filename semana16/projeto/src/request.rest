@@ -1,0 +1,40 @@
+GET http://localhost:3003/
+###
+
+PUT http://localhost:3003/user
+Content-Type: application/json
+
+{
+	"name": "Astro Dev O retorno",
+	"nickname": "astrodev returns",
+	"email": "astroreturns@dev.com"
+}
+
+###
+GET http://localhost:3003/user/3
+
+###
+
+POST http://localhost:3003/user/edit/1
+Content-Type: application/json
+
+{
+	"name": "Astro Dev",
+	"nickname": "astrodev"
+}
+
+### 
+
+PUT http://localhost:3003/task
+Content-Type: application/json
+
+{
+    "title": "Tererere",
+	"description": "Testani",
+	"limitDate": "04/05/2021",
+	"creatorUserId": "3"
+}
+
+
+###
+GET http://localhost:3003/task/13
