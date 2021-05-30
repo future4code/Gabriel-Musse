@@ -14,6 +14,9 @@ Content-Type: application/json
 GET http://localhost:3003/user/3
 
 ###
+GET http://localhost:3003/user?query=dev
+
+###
 
 POST http://localhost:3003/user/edit/1
 Content-Type: application/json
@@ -29,12 +32,33 @@ PUT http://localhost:3003/task
 Content-Type: application/json
 
 {
-    "title": "Tererere",
-	"description": "Testani",
-	"limitDate": "04/05/2021",
-	"creatorUserId": "3"
+    "title": "Tererere5",
+	"description": "Testani55",
+	"limitDate": "04/05/2022",
+	"creatorUserId": "1"
 }
+###
+
+GET http://localhost:3003/task?creatorUserId=3
 
 
 ###
 GET http://localhost:3003/task/13
+
+###
+GET http://localhost:3003/user/all
+
+
+###
+
+POST http://localhost:3003/task/responsible
+Content-Type: application/json
+
+{
+	"task_id": "15",
+	"responsible_user_id": "3"
+}
+
+
+###
+GET http://localhost:3003/task/1/responsible
