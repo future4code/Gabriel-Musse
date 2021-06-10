@@ -1,0 +1,45 @@
+POST http://localhost:3003/signup
+Content-Type: application/json
+
+{
+    "name": "Gabriel",
+    "email": "Gabriel@lbn.com",
+    "password": "abc123"
+}
+
+###
+
+POST http://localhost:3003/login
+Content-Type: application/json
+
+{
+    "email": "Gabriel@lbn.com",
+    "password": "abc123"
+}
+
+###
+
+GET http://localhost:3003/user/profile
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJjMjU3YjRmLTljNTMtNGY0Zi1iODZlLTc4ZDAzNDczM2FhMiIsImlhdCI6MTYyMzM0MzE1MywiZXhwIjoxNjI1NDE2NzUzfQ.LAklujfrhLy1dDtwJqzAk72duRNgTz_cEYBl8_PDX3A
+
+###
+
+GET http://localhost:3003/user/bc257b4f-9c53-4f4f-b86e-78d034733aa2
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRlZDZhNWJmLWJlOWEtNGNkMS04OTVjLTZiOWM3MjA0YmU0YyIsImlhdCI6MTYyMzM0MTk2MywiZXhwIjoxNjI1NDE1NTYzfQ.N0ASoHc7MSrbeIvpDHBY4HbRR4t3jwoUloYI_U4xwIU
+
+###
+
+POST http://localhost:3003/recipe
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJjMjU3YjRmLTljNTMtNGY0Zi1iODZlLTc4ZDAzNDczM2FhMiIsImlhdCI6MTYyMzM0NTA2MSwiZXhwIjoxNjI1NDE4NjYxfQ.tvMLuNnSf5n_ddGiKz-zqwaUMv6r5byCmNH_eyQPdRM
+
+{
+    "title": "Nuggets no Air Fryer",
+    "description": "Coloque os nuggets por 20 minutos no Air Fryer."
+}
+
+###
+
+GET http://localhost:3003/recipe/d7237fd1-ac98-41db-9b73-bb9ed05552a6
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJjMjU3YjRmLTljNTMtNGY0Zi1iODZlLTc4ZDAzNDczM2FhMiIsImlhdCI6MTYyMzM0MzE1MywiZXhwIjoxNjI1NDE2NzUzfQ.LAklujfrhLy1dDtwJqzAk72duRNgTz_cEYBl8_PDX3A
+
