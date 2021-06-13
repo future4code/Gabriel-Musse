@@ -34,4 +34,4 @@ FOREIGN KEY (user_to_follow_id) REFERENCES Cookenu_User(id)
 SELECT * FROM Cookenu_Followers;
 
 
-DELETE FROM Cookenu_Followers WHERE user_follower_id = "bc257b4f-9c53-4f4f-b86e-78d034733aa2";
+DELETE FROM Cookenu_Followers WHERE user_follower_id = "ded6a5bf-be9a-4cd1-895c-6b9c7204be4c";
