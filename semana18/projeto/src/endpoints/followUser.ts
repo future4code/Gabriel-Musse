@@ -30,7 +30,11 @@ export default async function followUser(
       res.statusCode = 409;
       throw new Error("User not found");
     }
-
+    
+    if(tokenData.id === userToFollowId){
+      res.statusCode = 409;
+      throw new Error("You cannot follow yourself");
+    }
     const users = {
       user_follower_id: tokenData.id,
       user_to_follow_id: userToFollowId,
