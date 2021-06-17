@@ -1,28 +1,66 @@
 import { UserDatabase } from "../data/UserDatabase";
-import { SignupInputDTO, User } from "../model/User";
+import { LoginInputDTO, User, UserInputDTO } from "../model/User";
 import { HashManager } from "../services/HashManager";
 import { IdGenerator } from "../services/IdGenerator";
-import { TokenManager } from "../services/TokenManager";
+import { Authenticator } from "../services/Authenticator";
 
 export class UserBusiness {
-  async signup(input: SignupInputDTO): Promise<string> {
-    if (!input.name || !input.email || !input.password) {
-      throw new Error('Fields "name", "email" and "password" are required');
+  async createUser(input: UserInputDTO): Promise<string> {
+    try {
+      if (!input.name || !input.email || !input.password) {
+        throw new Error('Fields "name", "email" and "password" are required');
+      }
+      const idGenerator = new IdGenerator();
+      const id: string = idGenerator.generateId();
+
+      const hashManager = new HashManager();
+      const cypherPassword = await hashManager.hash(input.password);
+
+      const user = new User(id, input.name, input.email, cypherPassword);
+
+      const userDatabase = new UserDatabase();
+      await userDatabase.insertUser(user);
+
+      const authenticator = new Authenticator();
+      const accessToken = authenticator.generateToken({ id });
+
+      return accessToken;
+    } catch (error) {
+      throw new Error(error.message);
     }
-    const idGenerator = new IdGenerator();
-    const id: string = idGenerator.generateId();
+  }
 
-    const hashManager = new HashManager();
-    const cypherPassword = await hashManager.hash(input.password);
+  async getUserByEmail(input: LoginInputDTO): Promise<string> {
+    try {
+      if (!input.email || !input.password) {
+        throw new Error('Fields "email" and "password" are required');
+      }
 
-    const user = new User(id, input.name, input.email, cypherPassword);
+      const userDatabase = new UserDatabase();
+      const user = await userDatabase.getUserByEmail(input.email);
 
-    const userDatabase = new UserDatabase();
-    await userDatabase.insertUser(user);
+      if (!user) {
+        throw new Error("Invalid email");
+      }
 
-    const tokenManager = new TokenManager();
-    const token: string = tokenManager.generateToken({ id });
+      const hashManager = new HashManager();
+      const hashCompare = await hashManager.compare(
+        input.password,
+        user.getPassword()
+      );
 
-    return token;
+      if (!hashCompare) {
+        throw new Error("Invalid password");
+      }
+
+      const authenticator = new Authenticator();
+      const accessToken = authenticator.generateToken({
+        id: user.getId(),
+      });
+
+      return accessToken;
+    } catch (error) {
+      throw new Error(error.message);
+    }
   }
 }
