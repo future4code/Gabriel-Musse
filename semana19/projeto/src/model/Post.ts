@@ -13,9 +13,9 @@ export class Post {
 
     private type: POST_TYPES,
 
-    private createdAt: Date,
+    private created_at: Date,
 
-    private authorId: string
+    private author_id: string
   ) {}
 
   getId() {
@@ -35,11 +35,11 @@ export class Post {
   }
 
   getCreatedAt() {
-    return this.createdAt;
+    return this.created_at;
   }
 
   getAuthorId() {
-    return this.authorId;
+    return this.author_id;
   }
 
   setId(id: string) {
@@ -58,12 +58,12 @@ export class Post {
     this.type = type;
   }
 
-  setCreatedAt(photo: string) {
-    this.photo = photo;
+  setCreatedAt(created_at: Date) {
+    this.created_at= created_at;
   }
 
-  setAuthorId(authorId: string) {
-    this.authorId = authorId;
+  setAuthorId(author_id: string) {
+    this.author_id = author_id;
   }
 
   static toPostModel(post: any): Post {
@@ -72,16 +72,17 @@ export class Post {
       post.photo,
       post.description,
       post.type,
-      post.createdAt,
-      post.authorId
+      post.created_at,
+      post.author_id
     );
   }
 }
 
 export interface PostInputDTO {
-  available: boolean;
 
-  title: string;
+   photo: string,
 
-  director: string;
+   description: string,
+
+   type: POST_TYPES
 }
