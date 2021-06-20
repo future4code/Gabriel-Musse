@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { LoginInputDTO, UserInputDTO } from "../model/User";
+import { FriendDTO, LoginInputDTO, UserInputDTO } from "../model/User";
 import { UserBusiness } from "../business/UserBusiness";
 
 export class UserController {
@@ -45,4 +45,43 @@ export class UserController {
     }
   }
 
+  async addFriend(req: Request, res: Response) {
+    try {
+      const token = req.headers.authorization!;
+
+      const input: FriendDTO = { id: req.body.id };
+
+      const userBusiness = new UserBusiness();
+      await userBusiness.addFriend(input, token);
+
+      let message = "Friend added successfully!";
+
+      res.status(201).send({ message });
+    } catch (error) {
+      res.statusCode = 400;
+      let message = error.sqlMessage || error.message;
+
+      res.send({ message });
+    }
+  }
+
+  async removeFriend(req: Request, res: Response) {
+    try {
+      const token = req.headers.authorization!;
+
+      const input: FriendDTO = { id: req.body.id };
+
+      const userBusiness = new UserBusiness();
+      await userBusiness.removeFriend(input, token);
+
+      let message = "Friend removed successfully!";
+
+      res.status(201).send({ message });
+    } catch (error) {
+      res.statusCode = 400;
+      let message = error.sqlMessage || error.message;
+
+      res.send({ message });
+    }
+  }
 }

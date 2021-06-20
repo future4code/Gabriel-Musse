@@ -54,3 +54,7 @@ export interface LoginInputDTO{
   email: string;
   password: string;
 }
+
+export interface FriendDTO {
+    id: string
+}

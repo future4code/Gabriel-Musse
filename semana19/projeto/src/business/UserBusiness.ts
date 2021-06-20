@@ -1,5 +1,5 @@
 import { UserDatabase } from "../data/UserDatabase";
-import { LoginInputDTO, User, UserInputDTO } from "../model/User";
+import { FriendDTO, LoginInputDTO, User, UserInputDTO } from "../model/User";
 import { HashManager } from "../services/HashManager";
 import { IdGenerator } from "../services/IdGenerator";
 import { Authenticator } from "../services/Authenticator";
@@ -59,6 +59,64 @@ export class UserBusiness {
       });
 
       return accessToken;
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
+
+  async addFriend(input: FriendDTO, token: string): Promise<void> {
+    try {
+      const authenticator = new Authenticator();
+      const verifiedToken = authenticator.getData(token);
+
+      if (!token) {
+        throw new Error("A jwt must be provided");
+      }
+
+      if (!input) {
+        throw new Error('Field "id" is required');
+      }
+
+      const userDatabase = new UserDatabase();
+      const friends = await userDatabase.checkFriends(
+        verifiedToken.id,
+        input.id
+      );
+
+      if (friends.length !== 0) {
+        throw new Error("You are already friends with this user");
+      } else {
+        return await userDatabase.addFriend(verifiedToken.id, input.id);
+      }
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
+
+  async removeFriend(input: FriendDTO, token: string): Promise<void> {
+    try {
+      const authenticator = new Authenticator();
+      const verifiedToken = authenticator.getData(token);
+
+      if (!token) {
+        throw new Error("A jwt must be provided");
+      }
+
+      if (!input) {
+        throw new Error('Field "id" is required');
+      }
+
+      const userDatabase = new UserDatabase();
+      const friends = await userDatabase.checkFriends(
+        verifiedToken.id,
+        input.id
+      );
+
+      if (friends.length === 0) {
+        throw new Error("You are not friends with this user");
+      } else {
+        return await userDatabase.removeFriend(verifiedToken.id, input.id);
+      }
     } catch (error) {
       throw new Error(error.message);
     }
